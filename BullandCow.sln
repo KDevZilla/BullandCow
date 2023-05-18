@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.2092
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullandCow", "BullandCow\BullandCow.csproj", "{ADD7FDBC-028D-41BF-9559-0B77C71704AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestBullandCow", "UnitTestBullandCow\UnitTestBullandCow.csproj", "{E64786E2-9FC1-4695-A6B9-123972E4E459}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{ADD7FDBC-028D-41BF-9559-0B77C71704AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ADD7FDBC-028D-41BF-9559-0B77C71704AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{ADD7FDBC-028D-41BF-9559-0B77C71704AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E64786E2-9FC1-4695-A6B9-123972E4E459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E64786E2-9FC1-4695-A6B9-123972E4E459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E64786E2-9FC1-4695-A6B9-123972E4E459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E64786E2-9FC1-4695-A6B9-123972E4E459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
