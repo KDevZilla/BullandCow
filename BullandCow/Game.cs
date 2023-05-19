@@ -31,23 +31,25 @@ namespace BullandCow
       //  public bool IsWon { get; private set; } = false;
         public List<String> listGuessNumberHistory = null;
         public List<GuessResult> listGuessResultHistory = null;
-        public GuessResult CheckResult(String guestNumber)
+        public int NumberofTimesAllowToGuess { get; private set; } = 7;
+
+        public GuessResult CheckResult(String guessNumber)
         {
             int i;
             int numberofBulls = 0;
             int numberofCows = 0;
             HashSet<String> hsh = new HashSet<String>();
-            for (i = 0; i < guestNumber.Length; i++)
+            for (i = 0; i < guessNumber.Length; i++)
             {
-                if(hsh.Contains (guestNumber [i].ToString()))
+                if(hsh.Contains (guessNumber [i].ToString()))
                 {
-                    throw new ArgumentException($"{guestNumber} contains a duplicate number");
+                    throw new ArgumentException($"{guessNumber} contains a duplicate number");
                 }
-                hsh.Add(guestNumber[i].ToString());
+                hsh.Add(guessNumber[i].ToString());
             }
-            for (i = 0; i < guestNumber.Length; i++)
+            for (i = 0; i < guessNumber.Length; i++)
             {
-                String number = guestNumber[i].ToString();
+                String number = guessNumber[i].ToString();
                 int indexofNumberinSecret = SecretNumber.IndexOf(number);
                 if(indexofNumberinSecret == -1)
                 {
@@ -62,18 +64,21 @@ namespace BullandCow
                 numberofBulls++;
             }
             GuessResult result = new GuessResult(numberofCows, numberofBulls);
-            listGuessNumberHistory.Add(guestNumber);
+            listGuessNumberHistory.Add(guessNumber);
             listGuessResultHistory.Add(result);
-            if(result.NumberofBulls == DigitLength)
+            if (result.NumberofBulls == DigitLength)
             {
                 GameResult = GameResultEnum.Win;
             }
-
-            if(CurrentGuestNumber > 7)
+            else
             {
-                GameResult = GameResultEnum.Lose;
+                if (CurrentGuessNumber >= NumberofTimesAllowToGuess)
+                {
+                    GameResult = GameResultEnum.Lose;
+                }
             }
-            CurrentGuestNumber++;
+
+            CurrentGuessNumber++;
             return result;
         }
         public static int GetRandomNumber(int min, int max)
@@ -118,16 +123,17 @@ namespace BullandCow
         }
         public Game()
         {
-            Initial(4);
+            Initial(4,7);
         }
 
-        public Game(int numberofDigit)
+        public Game(int numberofDigit, int numberofTimeAllowGuess)
         {
-            Initial(numberofDigit);
+            Initial(numberofDigit, numberofTimeAllowGuess);
         }
-        public int CurrentGuestNumber { get; private set; } = 1;
-        public void Initial(int numberofDigit)
+        public int CurrentGuessNumber { get; private set; } = 1;
+        public void Initial(int numberofDigit, int numberofTimeAllowGuess)
         {
+            this.NumberofTimesAllowToGuess = numberofTimeAllowGuess;
             DigitLength = numberofDigit;
             GenerateSecretNumber(DigitLength);
             listGuessNumberHistory = new List<string>();

@@ -48,26 +48,58 @@ namespace BullandCow
             listRowControl.Add(new RowControl(this.lblGuess5, lblBulls5, lblCows5));
             listRowControl.Add(new RowControl(this.lblGuess6, lblBulls6, lblCows6));
             listRowControl.Add(new RowControl(this.lblGuess7, lblBulls7, lblCows7));
+            listRowControl.Add(new RowControl(this.lblGuess8, lblBulls8, lblCows8));
+            listRowControl.Add(new RowControl(this.lblGuess9, lblBulls9, lblCows9));
 
             int i;
             for (i = 0; i < listRowControl.Count; i++)
             {
                 listRowControl[i].Clear();
             }
-            game = new Game(4);
+            int numberofDigit = 4;
+            int numberofTimeAllowtoguess = 9;
+            game = new Game(numberofDigit, numberofTimeAllowtoguess);
 
             //listRowControl.Add(new RowControl(this.lblGuess1, lblBulls8, lblCows1))
 
+        }
+        private String InsertSpaceBetweenDigit(String digits)
+        {
+            StringBuilder strB = new StringBuilder();
+            digits.ForEach(x => strB.Append(x).Append(" "));
+            return strB.ToString();
         }
         private void Render()
         {
             int i;
             for (i = 0; i < game.listGuessNumberHistory.Count; i++)
             {
-                listRowControl[i].lblGuessNumber.Text = game.listGuessNumberHistory[i];
+                listRowControl[i].lblGuessNumber.Text = InsertSpaceBetweenDigit(game.listGuessNumberHistory[i]);
                 listRowControl[i].lblBull.Text = game.listGuessResultHistory[i].NumberofBulls.ToString();
                 listRowControl[i].lblCow.Text = game.listGuessResultHistory[i].NumberofCows.ToString();
 
+                listRowControl[i].lblBull.ForeColor = Color.Black;
+                listRowControl[i].lblCow.ForeColor = Color.Black;
+
+                if (int.Parse ( listRowControl[i].lblBull.Text) > 0)
+                {
+                    listRowControl[i].lblBull.ForeColor = Color.Teal;
+                }
+
+                if (int.Parse(listRowControl[i].lblCow.Text) > 0)
+                {
+                    listRowControl[i].lblCow.ForeColor = Color.Teal;
+                }
+
+                this.lblFin.Text = game.GameResult == Game.GameResultEnum.NotDecide
+                    ? "? ? ? ?"
+                    : InsertSpaceBetweenDigit(game.SecretNumber);
+                /*
+                if (game.GameResult != Game.GameResultEnum.NotDecide)
+                {
+                    this.lblFin.Text = InsertSpaceBetweenDigit(game.SecretNumber);
+                }
+                */
             }
         }
 
