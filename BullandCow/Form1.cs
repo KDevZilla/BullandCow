@@ -51,6 +51,12 @@ namespace BullandCow
             listRowControl.Add(new RowControl(this.lblGuess8, lblBulls8, lblCows8));
             listRowControl.Add(new RowControl(this.lblGuess9, lblBulls9, lblCows9));
 
+            NewGame();
+            //listRowControl.Add(new RowControl(this.lblGuess1, lblBulls8, lblCows1))
+
+        }
+        private void NewGame()
+        {
             int i;
             for (i = 0; i < listRowControl.Count; i++)
             {
@@ -59,9 +65,7 @@ namespace BullandCow
             int numberofDigit = 4;
             int numberofTimeAllowtoguess = 9;
             game = new Game(numberofDigit, numberofTimeAllowtoguess);
-
-            //listRowControl.Add(new RowControl(this.lblGuess1, lblBulls8, lblCows1))
-
+            Render();
         }
         private String InsertSpaceBetweenDigit(String digits)
         {
@@ -72,6 +76,9 @@ namespace BullandCow
         private void Render()
         {
             int i;
+            this.lblFin.Text = game.GameResult == Game.GameResultEnum.NotDecide
+                                ? "? ? ? ?"
+                                : InsertSpaceBetweenDigit(game.SecretNumber);
             for (i = 0; i < game.listGuessNumberHistory.Count; i++)
             {
                 listRowControl[i].lblGuessNumber.Text = InsertSpaceBetweenDigit(game.listGuessNumberHistory[i]);
@@ -91,9 +98,7 @@ namespace BullandCow
                     listRowControl[i].lblCow.ForeColor = Color.Teal;
                 }
 
-                this.lblFin.Text = game.GameResult == Game.GameResultEnum.NotDecide
-                    ? "? ? ? ?"
-                    : InsertSpaceBetweenDigit(game.SecretNumber);
+
                 /*
                 if (game.GameResult != Game.GameResultEnum.NotDecide)
                 {
@@ -105,8 +110,25 @@ namespace BullandCow
 
         private void btnCheckResult_Click(object sender, EventArgs e)
         {
+
+            if(this.txtGuessNumber.Text.Trim ().Length !=
+                game.DigitLength)
+            {
+                MessageBox.Show($"Please enter number {game.DigitLength} length");
+                return;
+            }
+            
+
             String numberGuess = this.txtGuessNumber.Text;
-            game.CheckResult(numberGuess);
+            try
+            {
+                game.CheckResult(numberGuess);
+
+            }catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
             Render();
             this.txtGuessNumber.Text = "";
             if(game.GameResult == Game.GameResultEnum.Win)
@@ -119,6 +141,28 @@ namespace BullandCow
                 MessageBox.Show("You lost");
                 return;
             }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show ("Do you want to exit ?","", MessageBoxButtons.OKCancel ) != DialogResult.OK)
+            {
+                return;
+            }
+            Application.Exit();
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            NewGame();
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAbout f = new FormAbout();
+            f.StartPosition = FormStartPosition.CenterParent;
+            f.ShowDialog(this);
+
         }
     }
 }

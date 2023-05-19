@@ -39,8 +39,14 @@ namespace BullandCow
             int numberofBulls = 0;
             int numberofCows = 0;
             HashSet<String> hsh = new HashSet<String>();
+            String validNumber = "123456789";
             for (i = 0; i < guessNumber.Length; i++)
             {
+                bool IsNumber = validNumber.IndexOf(guessNumber[i]) != -1;
+                if (!IsNumber)
+                {
+                    throw new ArgumentException($"{guessNumber} contains an invalid character, please enter the number between 1-9, for {DigitLength} digits");
+                }
                 if(hsh.Contains (guessNumber [i].ToString()))
                 {
                     throw new ArgumentException($"{guessNumber} contains a duplicate number");
