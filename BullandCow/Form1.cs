@@ -50,6 +50,10 @@ namespace BullandCow
             listRowControl.Add(new RowControl(this.lblGuess7, lblBulls7, lblCows7));
             listRowControl.Add(new RowControl(this.lblGuess8, lblBulls8, lblCows8));
             listRowControl.Add(new RowControl(this.lblGuess9, lblBulls9, lblCows9));
+            btnNewGame.Click += (o, e2) =>
+            {
+                NewGame();
+            };
 
             NewGame();
             //listRowControl.Add(new RowControl(this.lblGuess1, lblBulls8, lblCows1))
@@ -65,6 +69,9 @@ namespace BullandCow
             int numberofDigit = 4;
             int numberofTimeAllowtoguess = 9;
             game = new Game(numberofDigit, numberofTimeAllowtoguess);
+            this.txtGuessNumber.Visible = true;
+            this.btnCheckResult.Visible = true;
+            this.btnNewGame.Visible = false;
             Render();
         }
         private String InsertSpaceBetweenDigit(String digits)
@@ -134,11 +141,17 @@ namespace BullandCow
             if(game.GameResult == Game.GameResultEnum.Win)
             {
                 MessageBox.Show("You won");
+                this.txtGuessNumber.Visible = false;
+                this.btnCheckResult.Visible = false;
+                this.btnNewGame.Visible = true;
                 return;
             }
             if(game.GameResult == Game.GameResultEnum.Lose)
             {
                 MessageBox.Show("You lost");
+                this.txtGuessNumber.Visible = false;
+                this.btnCheckResult.Visible = false;
+                this.btnNewGame.Visible = true;
                 return;
             }
         }

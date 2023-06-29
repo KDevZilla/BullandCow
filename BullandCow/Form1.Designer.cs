@@ -33,6 +33,11 @@
             this.btnCheckResult = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.lblFin = new System.Windows.Forms.Label();
+            this.lblBulls9 = new System.Windows.Forms.Label();
+            this.lblBulls8 = new System.Windows.Forms.Label();
+            this.lblCows9 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.lblBulls7 = new System.Windows.Forms.Label();
             this.lblBulls6 = new System.Windows.Forms.Label();
             this.lblBulls5 = new System.Windows.Forms.Label();
@@ -65,20 +70,16 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblCows7 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.lblGuess8 = new System.Windows.Forms.Label();
-            this.lblGuess9 = new System.Windows.Forms.Label();
             this.lblCows8 = new System.Windows.Forms.Label();
-            this.lblCows9 = new System.Windows.Forms.Label();
-            this.lblBulls8 = new System.Windows.Forms.Label();
-            this.lblBulls9 = new System.Windows.Forms.Label();
-            this.lblFin = new System.Windows.Forms.Label();
+            this.lblGuess9 = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnNewGame = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -181,6 +182,75 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090909F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(420, 372);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // lblFin
+            // 
+            this.lblFin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblFin.AutoSize = true;
+            this.lblFin.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFin.Location = new System.Drawing.Point(87, 330);
+            this.lblFin.Name = "lblFin";
+            this.lblFin.Size = new System.Drawing.Size(162, 42);
+            this.lblFin.TabIndex = 21;
+            this.lblFin.Text = "? ? ? ?";
+            this.lblFin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblBulls9
+            // 
+            this.lblBulls9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBulls9.AutoSize = true;
+            this.lblBulls9.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBulls9.Location = new System.Drawing.Point(339, 297);
+            this.lblBulls9.Name = "lblBulls9";
+            this.lblBulls9.Size = new System.Drawing.Size(78, 33);
+            this.lblBulls9.TabIndex = 9;
+            this.lblBulls9.Text = "0";
+            this.lblBulls9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblBulls8
+            // 
+            this.lblBulls8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblBulls8.AutoSize = true;
+            this.lblBulls8.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblBulls8.Location = new System.Drawing.Point(339, 264);
+            this.lblBulls8.Name = "lblBulls8";
+            this.lblBulls8.Size = new System.Drawing.Size(78, 33);
+            this.lblBulls8.TabIndex = 9;
+            this.lblBulls8.Text = "0";
+            this.lblBulls8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblCows9
+            // 
+            this.lblCows9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCows9.AutoSize = true;
+            this.lblCows9.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCows9.Location = new System.Drawing.Point(255, 297);
+            this.lblCows9.Name = "lblCows9";
+            this.lblCows9.Size = new System.Drawing.Size(78, 33);
+            this.lblCows9.TabIndex = 9;
+            this.lblCows9.Text = "0";
+            this.lblCows9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(3, 297);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(78, 33);
+            this.label13.TabIndex = 18;
+            this.label13.Text = "9";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblBulls7
             // 
@@ -625,19 +695,6 @@
             this.label12.Text = "8";
             this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label13
-            // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(3, 297);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(78, 33);
-            this.label13.TabIndex = 18;
-            this.label13.Text = "9";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // lblGuess8
             // 
             this.lblGuess8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -651,20 +708,6 @@
             this.lblGuess8.TabIndex = 19;
             this.lblGuess8.Text = "1234";
             this.lblGuess8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblGuess9
-            // 
-            this.lblGuess9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblGuess9.AutoSize = true;
-            this.lblGuess9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblGuess9.Location = new System.Drawing.Point(87, 297);
-            this.lblGuess9.Name = "lblGuess9";
-            this.lblGuess9.Size = new System.Drawing.Size(162, 33);
-            this.lblGuess9.TabIndex = 20;
-            this.lblGuess9.Text = "1234";
-            this.lblGuess9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblCows8
             // 
@@ -680,61 +723,19 @@
             this.lblCows8.Text = "0";
             this.lblCows8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblCows9
+            // lblGuess9
             // 
-            this.lblCows9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.lblGuess9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblCows9.AutoSize = true;
-            this.lblCows9.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCows9.Location = new System.Drawing.Point(255, 297);
-            this.lblCows9.Name = "lblCows9";
-            this.lblCows9.Size = new System.Drawing.Size(78, 33);
-            this.lblCows9.TabIndex = 9;
-            this.lblCows9.Text = "0";
-            this.lblCows9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblBulls8
-            // 
-            this.lblBulls8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBulls8.AutoSize = true;
-            this.lblBulls8.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBulls8.Location = new System.Drawing.Point(339, 264);
-            this.lblBulls8.Name = "lblBulls8";
-            this.lblBulls8.Size = new System.Drawing.Size(78, 33);
-            this.lblBulls8.TabIndex = 9;
-            this.lblBulls8.Text = "0";
-            this.lblBulls8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblBulls9
-            // 
-            this.lblBulls9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblBulls9.AutoSize = true;
-            this.lblBulls9.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBulls9.Location = new System.Drawing.Point(339, 297);
-            this.lblBulls9.Name = "lblBulls9";
-            this.lblBulls9.Size = new System.Drawing.Size(78, 33);
-            this.lblBulls9.TabIndex = 9;
-            this.lblBulls9.Text = "0";
-            this.lblBulls9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblFin
-            // 
-            this.lblFin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblFin.AutoSize = true;
-            this.lblFin.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFin.Location = new System.Drawing.Point(87, 330);
-            this.lblFin.Name = "lblFin";
-            this.lblFin.Size = new System.Drawing.Size(162, 42);
-            this.lblFin.TabIndex = 21;
-            this.lblFin.Text = "? ? ? ?";
-            this.lblFin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblGuess9.AutoSize = true;
+            this.lblGuess9.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGuess9.Location = new System.Drawing.Point(87, 297);
+            this.lblGuess9.Name = "lblGuess9";
+            this.lblGuess9.Size = new System.Drawing.Size(162, 33);
+            this.lblGuess9.TabIndex = 20;
+            this.lblGuess9.Text = "1234";
+            this.lblGuess9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // menuStrip1
             // 
@@ -764,17 +765,17 @@
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // aboutToolStripMenuItem
             // 
@@ -783,12 +784,24 @@
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
+            // btnNewGame
+            // 
+            this.btnNewGame.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.ForeColor = System.Drawing.Color.Teal;
+            this.btnNewGame.Location = new System.Drawing.Point(272, 35);
+            this.btnNewGame.Name = "btnNewGame";
+            this.btnNewGame.Size = new System.Drawing.Size(178, 47);
+            this.btnNewGame.TabIndex = 5;
+            this.btnNewGame.Text = "New Game";
+            this.btnNewGame.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(474, 541);
+            this.Controls.Add(this.btnNewGame);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCheckResult);
             this.Controls.Add(this.txtGuessNumber);
@@ -865,6 +878,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnNewGame;
     }
 }
 
