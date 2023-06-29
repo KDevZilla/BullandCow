@@ -38,10 +38,10 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(39, 29);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(302, 21);
+            this.linkLabel1.Size = new System.Drawing.Size(297, 21);
             this.linkLabel1.TabIndex = 0;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = " https://github.com/KDevZilla/BullandCow";
+            this.linkLabel1.Text = " https://github.com/kdevzilla/BullandCow";
             // 
             // linkLabel2
             // 
