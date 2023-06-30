@@ -177,5 +177,10 @@ namespace BullandCow
             f.ShowDialog(this);
 
         }
+
+        private void btnNewGame_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
