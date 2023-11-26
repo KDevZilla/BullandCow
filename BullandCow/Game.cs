@@ -39,7 +39,7 @@ namespace BullandCow
             int numberofBulls = 0;
             int numberofCows = 0;
             HashSet<String> hsh = new HashSet<String>();
-            String validNumber = "123456789";
+            String validNumber = "0123456789";
             for (i = 0; i < guessNumber.Length; i++)
             {
                 bool IsNumber = validNumber.IndexOf(guessNumber[i]) != -1;
@@ -101,7 +101,7 @@ namespace BullandCow
             HashSet<int> hsh = new HashSet<int>();
             while(hsh.Count < numberofDigit)
             {
-                int RandomNumber = GetRandomNumber(1, 9);
+                int RandomNumber = GetRandomNumber(0, 10);
                 if(hsh.Contains(RandomNumber))
                 {
                     continue;
