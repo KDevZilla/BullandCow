@@ -3064,7 +3064,8 @@ namespace UnitTestBullandCow
         {
             BullandCowSolver.Solver solver = new BullandCowSolver.Solver();
             BullandCow.Game game = new BullandCow.Game(4, 10);
-            solver.Solve(game);
+            String answer=  solver.Solve(game);
+            System.Console.Write($"Answer {answer}");
         }
     }
 }

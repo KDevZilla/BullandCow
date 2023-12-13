@@ -73,7 +73,35 @@ namespace BullandCowSolver
             }
         }
         */
-        public void Solve(BullandCow.Game game)
+        private void AddHshNoDigit(HashSet<String> hshNoDigit, String number)
+        {
+            int i;
+            for (i = 0; i < number.Length; i++)
+            {
+                if(hshNoDigit.Contains(number[i].ToString ()))
+                {
+                    continue;
+                }
+                hshNoDigit.Add(number[i].ToString());
+            }
+        }
+        private bool isItContainNoDigit(HashSet<String> hshNoDigit, String number)
+        {
+            foreach (String digit in hshNoDigit)
+            {
+                if(number.Contains(digit))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        private static Random random = new Random();
+        private int getRandom(int min, int max)
+        {
+            return random.Next(min, max);
+        }
+        public String Solve(BullandCow.Game game)
         {
             List<String> listStringValidNumber = new List<string>();
             listStringValidNumber = GenAllPosibility(4, 1111, 9999, false);
@@ -83,45 +111,91 @@ namespace BullandCowSolver
             HashSet<String> hshInvalid = new HashSet<string>();
             HashSet<String> hshHasTried = new HashSet<string>();
             listStringValidNumber.ForEach(x => listGuessNumber.Add(new GuessNumberClass(x)));
-
+            HashSet<String> hshNoDigit = new HashSet<string>();
+            int guessCount = 0;
+            String answer = "";
             while (game.GameResult == BullandCow.Game.GameResultEnum.NotDecide)
             {
                 int i;
                 GuessResult result = new GuessResult(-1,-1);
                 int iCountInValid = 0;
-                for (i = 0; i < listGuessNumber.Count; i++)
-                {
-                    if(hshHasTried.Contains(listGuessNumber[i].Number))
+                GuessNumberClass guessNumber = listGuessNumber[getRandom (0,listGuessNumber.Count )];
+
+                    if(hshHasTried.Contains(guessNumber.Number))
                     {
                         continue;
                     }
-                    if(hshInvalid.Contains (listGuessNumber[i].Number))
+                    if(hshInvalid.Contains (guessNumber.Number))
                     {
                         continue;
                     }
-                    if(!listGuessNumber[i].isValid)
+                    if(!guessNumber.isValid)
                     {
                         
                         continue;
                     }
 
-                    result = game.CheckResultOnly(listGuessNumber[i].Number);
-                    if (!hshHasTried.Contains(listGuessNumber[i].Number))
+                    result = game.Guess(guessNumber.Number); //game.CheckResultOnly(guessNumber.Number);
+                    guessCount++;
+                    if (!hshHasTried.Contains(guessNumber.Number))
                     {
-                        hshHasTried.Add(listGuessNumber[i].Number);
+                        hshHasTried.Add(guessNumber.Number);
                     }
-                    if (result.NumberofBulls ==4 && result.NumberofCows == 4)
+                    if(result.NumberofBulls ==0 && result.NumberofCows == 0)
+                    {
+                        AddHshNoDigit(hshNoDigit, guessNumber.Number);
+                    }
+
+                    if (result.NumberofBulls  == 4)
                     {
                         string str = "Break;";
-                        game.Guess(listGuessNumber[i].Number);
+                        game.Guess(guessNumber.Number);
+                        Console.WriteLine("guessCount::" + guessCount);
+                        answer = guessNumber.Number;
                         break;
                     }
-                    for (int j = i + 1; j < listGuessNumber.Count; j++)
+                    if(result.NumberofCows == 4)
+                {
+                    String str = "Now we know what digit, just left the position";
+                }
+                    for (int j = 1; j < listGuessNumber.Count; j++)
                     {
                         if (!listGuessNumber[j].isValid)
                         {
                             continue;
                         }
+                        if (hshInvalid.Contains(listGuessNumber[j].Number))
+                        {
+                            continue;
+                        }
+                        if (isItContainNoDigit (hshNoDigit ,listGuessNumber [j].Number))
+                        {
+                            if (!hshInvalid.Contains(listGuessNumber[j].Number))
+                            {
+                                hshInvalid.Add(listGuessNumber[j].Number);
+                            }
+                            listGuessNumber[j].isValid = false;
+                        }
+                        GuessResult checkResult= listGuessNumber[j].CheckResultWithAnotherNumber(guessNumber.Number);
+                        
+                        int noofmatch = listGuessNumber[j].NumberOfMatch(guessNumber.Number );
+                        if(noofmatch < result.NumberofBulls + result.NumberofCows)
+                        {
+                            if (!hshInvalid.Contains(listGuessNumber[j].Number))
+                            {
+                                hshInvalid.Add(listGuessNumber[j].Number);
+                            }
+                            listGuessNumber[j].isValid = false;
+                        }
+                        if(checkResult.NumberofBulls != result.NumberofBulls)
+                    {
+                        if (!hshInvalid.Contains(listGuessNumber[j].Number))
+                        {
+                            hshInvalid.Add(listGuessNumber[j].Number);
+                        }
+                        listGuessNumber[j].isValid = false;
+                    }
+                        /*
                         var resultFromOtherNumber = game.CheckResultOnly(listGuessNumber[j].Number);
                         if (!resultFromOtherNumber.isEqual(result))
                         {
@@ -132,18 +206,26 @@ namespace BullandCowSolver
                                 hshInvalid.Add(listGuessNumber[j].Number);
                             }
                         }
+                        */
 
                     }
-                    System.Console.WriteLine("Invalid::" + iCountInValid);
+                   // System.Console.WriteLine("Invalid::" + iCountInValid);
 
 
                 }
-                
+                if(game.GameResult == Game.GameResultEnum.Win)
+            {
+                return $@"Answer is {answer} no of guess is {guessCount}";
+            }
+
+            return $@" You lost number of guess is {guessCount}";
+                System.Console.WriteLine("Invalid::" + hshInvalid.Count );
+
                 // game.CheckResult ()
                 //  game.CheckResultOnly ()
                 //game.CheckResult(number.ToString());
 
-            }
+            
         }
 
     }
