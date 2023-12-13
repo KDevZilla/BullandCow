@@ -49,6 +49,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SolverTesting.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -56,6 +57,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BullandCowSolver\BullandCowSolver.csproj">
+      <Project>{9983f81a-dcbf-413f-9c05-3bca2054c1b9}</Project>
+      <Name>BullandCowSolver</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BullandCow\BullandCow.csproj">
       <Project>{add7fdbc-028d-41bf-9559-0b77c71704ae}</Project>
       <Name>BullandCow</Name>

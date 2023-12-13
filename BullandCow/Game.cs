@@ -33,8 +33,70 @@ namespace BullandCow
         public List<GuessResult> listGuessResultHistory = null;
         public int NumberofTimesAllowToGuess { get; private set; } = 7;
 
-        public GuessResult CheckResult(String guessNumber)
+        //Does not set Game Result, does not increase CurrentGuessNumber
+        public GuessResult CheckResultOnly(String guessNumber)
         {
+            int i;
+            int numberofBulls = 0;
+            int numberofCows = 0;
+            HashSet<String> hsh = new HashSet<String>();
+            String validNumber = "0123456789";
+            for (i = 0; i < guessNumber.Length; i++)
+            {
+                bool IsNumber = validNumber.IndexOf(guessNumber[i]) != -1;
+                if (!IsNumber)
+                {
+                    throw new ArgumentException($"{guessNumber} contains an invalid character, please enter the number between 1-9, for {DigitLength} digits");
+                }
+                if (hsh.Contains(guessNumber[i].ToString()))
+                {
+                    throw new ArgumentException($"{guessNumber} contains a duplicate number");
+                }
+                hsh.Add(guessNumber[i].ToString());
+            }
+            for (i = 0; i < guessNumber.Length; i++)
+            {
+                String number = guessNumber[i].ToString();
+                int indexofNumberinSecret = SecretNumber.IndexOf(number);
+                if (indexofNumberinSecret == -1)
+                {
+                    continue;
+                }
+                if (indexofNumberinSecret != i)
+                {
+                    numberofCows++;
+                    continue;
+                }
+
+                numberofBulls++;
+            }
+            GuessResult result = new GuessResult(numberofCows, numberofBulls);
+            return result;
+
+            
+        }
+        public GuessResult Guess(String guessNumber)
+        {
+            var result = CheckResultOnly(guessNumber);
+
+            listGuessNumberHistory.Add(guessNumber);
+            listGuessResultHistory.Add(result);
+            if (result.NumberofBulls == DigitLength)
+            {
+                GameResult = GameResultEnum.Win;
+            }
+            else
+            {
+                if (CurrentGuessNumber >= NumberofTimesAllowToGuess)
+                {
+                    GameResult = GameResultEnum.Lose;
+                }
+            }
+
+            CurrentGuessNumber++;
+            return result;
+
+            /*
             int i;
             int numberofBulls = 0;
             int numberofCows = 0;
@@ -86,6 +148,7 @@ namespace BullandCow
 
             CurrentGuessNumber++;
             return result;
+            */
         }
         public static int GetRandomNumber(int min, int max)
         {

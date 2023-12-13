@@ -26,20 +26,20 @@ namespace UnitTestBullandCow
 
             game.GenereateSecretNumberForTesting("1234");
            
-            GuessResult guessResult = game.CheckResult("1345");
+            GuessResult guessResult = game.Guess("1345");
             Assert.AreEqual(guessResult.NumberofBulls, 1);
             Assert.AreEqual(guessResult.NumberofCows, 2);
             Assert.AreEqual(game.GameResult, Game.GameResultEnum.NotDecide);
 
 
-            guessResult = game.CheckResult("6789");
+            guessResult = game.Guess("6789");
             Assert.AreEqual(guessResult.NumberofBulls, 0);
             Assert.AreEqual(guessResult.NumberofCows, 0);
             Assert.AreEqual(game.GameResult, Game.GameResultEnum.NotDecide);
 
             try
             {
-                guessResult = game.CheckResult("1134");
+                guessResult = game.Guess("1134");
                 Assert.Fail("It must fail");
             }catch (ArgumentException ex)
             {
@@ -47,12 +47,12 @@ namespace UnitTestBullandCow
             }
 
 
-            guessResult = game.CheckResult("4321");
+            guessResult = game.Guess("4321");
             Assert.AreEqual(guessResult.NumberofBulls, 0);
             Assert.AreEqual(guessResult.NumberofCows, 4);
             Assert.AreEqual(game.GameResult, Game.GameResultEnum.NotDecide);
 
-            guessResult = game.CheckResult("1234");
+            guessResult = game.Guess("1234");
             Assert.AreEqual(guessResult.NumberofBulls, 4);
             Assert.AreEqual(guessResult.NumberofCows, 0);
             Assert.AreEqual(game.GameResult, Game.GameResultEnum.Win);
@@ -67,18 +67,18 @@ namespace UnitTestBullandCow
 
             game.GenereateSecretNumberForTesting("1234");
 
-            GuessResult guessResult = game.CheckResult("1345");
+            GuessResult guessResult = game.Guess("1345");
             Assert.AreEqual(guessResult.NumberofBulls, 1);
             Assert.AreEqual(guessResult.NumberofCows, 2);
             Assert.AreEqual(game.GameResult, Game.GameResultEnum.NotDecide);
 
-            game.CheckResult("1345");
-            game.CheckResult("1345");
-            game.CheckResult("1345");
-            game.CheckResult("1345");
-            game.CheckResult("1345");
-            game.CheckResult("1345");
-            game.CheckResult("1345");
+            game.Guess("1345");
+            game.Guess("1345");
+            game.Guess("1345");
+            game.Guess("1345");
+            game.Guess("1345");
+            game.Guess("1345");
+            game.Guess("1345");
 
             Assert.AreEqual(game.GameResult, Game.GameResultEnum.Lose);
 

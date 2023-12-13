@@ -129,7 +129,7 @@ namespace BullandCow
             String numberGuess = this.txtGuessNumber.Text;
             try
             {
-                game.CheckResult(numberGuess);
+                game.Guess(numberGuess);
 
             }catch (Exception ex)
             {
