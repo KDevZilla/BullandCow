@@ -3062,7 +3062,9 @@ namespace UnitTestBullandCow
         [TestMethod]
         public void Solve()
         {
-
+            BullandCowSolver.Solver solver = new BullandCowSolver.Solver();
+            BullandCow.Game game = new BullandCow.Game(4, 10);
+            solver.Solve(game);
         }
     }
 }

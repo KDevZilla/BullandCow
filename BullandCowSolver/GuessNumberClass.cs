@@ -9,7 +9,7 @@ namespace BullandCowSolver
     public class GuessNumberClass
     {
         public String Number { get; private set; }
-        public Boolean isValid { get; set; }
+        public Boolean isValid { get; set; } = true;
         public GuessNumberClass (String number)
         {
             this.Number = number;

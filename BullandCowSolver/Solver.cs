@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BullandCow;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -62,7 +63,7 @@ namespace BullandCowSolver
             return lstResult;
 
         }
-
+        /*
         public List<GuessNumberClass> GetValidNumber(String guessNumber, BullandCow.GuessResult result, List<GuessNumberClass> list)
         {
             int i;
@@ -71,6 +72,7 @@ namespace BullandCowSolver
                 
             }
         }
+        */
         public void Solve(BullandCow.Game game)
         {
             List<String> listStringValidNumber = new List<string>();
@@ -78,26 +80,67 @@ namespace BullandCowSolver
             // genAllPosibility(4, 1, 9, 1, "", listResult);
             List<String> listGuess = new List<string>();
             List<GuessNumberClass> listGuessNumber = new List<GuessNumberClass>();
-
+            HashSet<String> hshInvalid = new HashSet<string>();
+            HashSet<String> hshHasTried = new HashSet<string>();
             listStringValidNumber.ForEach(x => listGuessNumber.Add(new GuessNumberClass(x)));
 
             while (game.GameResult == BullandCow.Game.GameResultEnum.NotDecide)
             {
                 int i;
+                GuessResult result = new GuessResult(-1,-1);
+                int iCountInValid = 0;
                 for (i = 0; i < listGuessNumber.Count; i++)
                 {
-                    if(!listGuessNumber[i].isValid)
+                    if(hshHasTried.Contains(listGuessNumber[i].Number))
                     {
                         continue;
                     }
-                    var result = game.CheckResultOnly(listGuessNumber[i].Number);
-                    if(result.NumberofBulls ==0 && result.NumberofCows == 0)
+                    if(hshInvalid.Contains (listGuessNumber[i].Number))
                     {
+                        continue;
+                    }
+                    if(!listGuessNumber[i].isValid)
+                    {
+                        
+                        continue;
+                    }
+
+                    result = game.CheckResultOnly(listGuessNumber[i].Number);
+                    if (!hshHasTried.Contains(listGuessNumber[i].Number))
+                    {
+                        hshHasTried.Add(listGuessNumber[i].Number);
+                    }
+                    if (result.NumberofBulls ==4 && result.NumberofCows == 4)
+                    {
+                        string str = "Break;";
+                        game.Guess(listGuessNumber[i].Number);
+                        break;
+                    }
+                    for (int j = i + 1; j < listGuessNumber.Count; j++)
+                    {
+                        if (!listGuessNumber[j].isValid)
+                        {
+                            continue;
+                        }
+                        var resultFromOtherNumber = game.CheckResultOnly(listGuessNumber[j].Number);
+                        if (!resultFromOtherNumber.isEqual(result))
+                        {
+                            listGuessNumber[i].isValid = false;
+                            iCountInValid++;
+                            if (!hshInvalid.Contains(listGuessNumber[j].Number))
+                            {
+                                hshInvalid.Add(listGuessNumber[j].Number);
+                            }
+                        }
 
                     }
+                    System.Console.WriteLine("Invalid::" + iCountInValid);
+
+
                 }
-              // game.CheckResult ()
-              //  game.CheckResultOnly ()
+                
+                // game.CheckResult ()
+                //  game.CheckResultOnly ()
                 //game.CheckResult(number.ToString());
 
             }

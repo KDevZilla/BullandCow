@@ -15,7 +15,15 @@ namespace BullandCow
             this.NumberofBulls = numberofBulls;
             this.NumberofCows = numberOfCows;
         }
-
+        public Boolean isEqual(GuessResult anotherGuessResult)
+        {
+            if(anotherGuessResult == null)
+            {
+                return false;
+            }
+            return this.NumberofBulls == anotherGuessResult.NumberofBulls
+                && this.NumberofCows == anotherGuessResult.NumberofCows;
+        }
     }
     public class Game
     {
