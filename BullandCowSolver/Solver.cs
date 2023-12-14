@@ -103,6 +103,7 @@ namespace BullandCowSolver
         }
         public String Solve(BullandCow.Game game)
         {
+            StringBuilder strBGuessHistory = new StringBuilder();
             List<String> listStringValidNumber = new List<string>();
             listStringValidNumber = GenAllPosibility(4, 1111, 9999, false);
             // genAllPosibility(4, 1, 9, 1, "", listResult);
@@ -137,6 +138,8 @@ namespace BullandCowSolver
 
                     result = game.Guess(guessNumber.Number); //game.CheckResultOnly(guessNumber.Number);
                     guessCount++;
+                strBGuessHistory.Append($"{guessNumber.Number}  Bulls:{result.NumberofBulls} Cows:{result.NumberofCows}")
+                    .Append(Environment.NewLine);
                     if (!hshHasTried.Contains(guessNumber.Number))
                     {
                         hshHasTried.Add(guessNumber.Number);
@@ -213,12 +216,13 @@ namespace BullandCowSolver
 
 
                 }
-                if(game.GameResult == Game.GameResultEnum.Win)
+            if(game.GameResult == Game.GameResultEnum.Win)
             {
-                return $@"Answer is {answer} no of guess is {guessCount}";
+                strBGuessHistory.Append($@"Answer is {answer} no of guess is {guessCount}");
             }
 
-            return $@" You lost number of guess is {guessCount}";
+            strBGuessHistory.Append($@" You lost number of guess is {guessCount}");
+            return strBGuessHistory.ToString();
                 System.Console.WriteLine("Invalid::" + hshInvalid.Count );
 
                 // game.CheckResult ()
